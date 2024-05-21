@@ -4,6 +4,8 @@ use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\DashoardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +24,7 @@ Route::middleware(['auth', 'verified'])
                 -> name('admin.')
                 -> group(function(){
                     // vengon inserte tutte le rotte protette da auth
-
+                    Route::get('/', [DashoardController::class, 'index'])->name('home');
                 });
 
 
