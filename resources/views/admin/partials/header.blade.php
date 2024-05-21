@@ -1,20 +1,20 @@
 <header>
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('admin.home') }}">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" target='_blank' href="{{ route('home') }}">Vai al sito</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">li
-                <li>
-                    {{ Auth::user()->name }}
-                </li>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Logout</a>
-        </li>
-    </ul>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a href="{{ route('home') }}" target="_blank" class="navbar-brand">Vedi il sito</a>
+
+            <div class="d-flex align-items-center">
+                <form class="d-flex me-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <p class="me-3 mb-0">{{ Auth::user()->name }}</p>
+                <form action="{{ route('logout') }}" method="POST">
+                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-right-from-bracket"></i></button>
+                    @csrf
+                </form>
+            </div>
+
+        </div>
+    </nav>
 </header>
