@@ -3,15 +3,27 @@
 @section('content')
     <h2>Technologies</h2>
 
+    @if ($errors->any())
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     @if (session('error'))
         <div class="alert alert-danger" role="alert">
-            {{session('error')}}
+            {{ session('error') }}
         </div>
     @endif
 
     @if (session('success'))
         <div class="alert alert-success" role="alert">
-            {{session('success')}}
+            {{ session('success') }}
         </div>
     @endif
 
@@ -35,15 +47,34 @@
             @foreach ($technologies as $technology)
                 <tr>
                     <td>
-                        <input type="text" value="{{ $technology->name }}">
+                        <form action="{{ route('admin.technologies.update', $technology->id) }}" method="POST"
+                            id="form-edit-{{ $technology->id }}">
+                            @csrf
+                            @method('PUT')
+                            <input type="text" value="{{ $technology->name }}" name="name">
+                        </form>
                     </td>
 
-                    <td>
-                        <button class="btn my_bgy me-2"><i class="fa-solid fa-pencil"></i></button>
-                        <button class="btn my_bgr"><i class="fa-solid fa-trash-can"></i></button>
+                    <td class="d-flex">
+                        <button class="btn my_bgy me-2" onclick="submitForm({{ $technology->id }})"><i
+                                class="fa-solid fa-pencil"></i></button>
+
+                        <form action="{{ route('admin.technologies.destroy', $technology->id) }}" method="POST"
+                            onsubmit="return confirm('Do you want to delete this technology?')">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn my_bgr"><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+    <script>
+        function submitForm(id) {
+            const form = document.getElementById(`form-edit-${id}`);
+            form.submit();
+        }
+    </script>
 @endsection

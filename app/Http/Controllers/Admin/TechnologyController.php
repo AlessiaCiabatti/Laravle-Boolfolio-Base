@@ -31,10 +31,21 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
+        $val_data = $request->validate(
+            [
+                'name' => 'required|min:2|max:20'
+            ],
+            [
+                'name.required' => 'You have to write the name of the technology.',
+                'name.min' => 'Technology must have :min characters',
+                'name.max' => 'Technology must not have more than :max characters'
+            ],
+        );
+
         $exist = Technology::where('name', $request->name)->first();
-        if($exist){
+        if ($exist) {
             return redirect()->route('admin.technologies.index')->with('error', 'Already existing technology');
-        }else{
+        } else {
             $new = new Technology();
             $new->name = $request->name;
             $new->slug = Helper::generateSlug($new->name, Technology::class);
@@ -42,6 +53,7 @@ class TechnologyController extends Controller
 
             return redirect()->route('admin.technologies.index')->with('success', 'Added technology');
         }
+
     }
 
     /**
@@ -63,16 +75,37 @@ class TechnologyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Technology $technology)
     {
-        //
+        $val_data = $request->validate(
+            [
+                'name' => 'required|min:2|max:20'
+            ],
+            [
+                'name.required' => 'You have to write the name of the technology.',
+                'name.min' => 'Technology must have :min characters',
+                'name.max' => 'Technology must not have more than :max characters'
+            ],
+        );
+
+        $exist = Technology::where('name', $request->name)->first();
+        if ($exist) {
+            return redirect()->route('admin.technologies.index')->with('error', 'Already existing technology');
+        } else {
+            $val_data ['slug'] = Helper::generateSlug($request->name, Technology::class);
+            $technology->update($val_data);
+
+            return redirect()->route('admin.technologies.index')->with('success', 'Modified technology');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+        return redirect()->route('admin.technologies.index')->with('success', 'Delete Thechnology');
+
     }
 }
