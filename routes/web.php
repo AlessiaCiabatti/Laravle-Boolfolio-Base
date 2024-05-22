@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Guest\PageController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TechnologyController;
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +28,10 @@ Route::middleware(['auth', 'verified'])
                 -> group(function(){
                     // vengon inserte tutte le rotte protette da auth
                     Route::get('/', [DashoardController::class, 'index'])->name('home');
+                    // inseriamo tutte le rotte del CRUD
+                    Route::resource('projects', ProjectController::class);
+                    Route::resource('technologies', TechnologyController::class);
+                    Route::resource('types', TypeController::class);
                 });
 
 
