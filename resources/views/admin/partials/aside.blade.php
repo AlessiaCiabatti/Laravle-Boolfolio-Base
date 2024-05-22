@@ -8,14 +8,14 @@
     <div>
         <ul>
             <li>
-                <a class="text-white" href="{{ route('admin.projects.index') }}">
+                <a class="text-white" href="#">
                     <i class="fa-solid fa-diagram-project"></i>
                     Categories
                 </a>
             </li>
 
             <li>
-                <a class="text-white" href="#">
+                <a class="text-white" href="{{ route('admin.technologies.index') }}">
                     <i class="fa-solid fa-keyboard"></i>
                     Technologies
                 </a>

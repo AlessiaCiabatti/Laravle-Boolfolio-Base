@@ -2,7 +2,7 @@
 
 @section('content')
     <h2>Projects</h2>
-    @dump($projects)
+    @dump($technologies)
     <table class="table">
         <thead>
           <tr>
@@ -11,10 +11,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-          </tr>
+            @foreach ($technologies as $technology )
+            <tr>
+                <th scope="row">{{ $technology->name }}</th>
+                <td>Mark</td>
+              </tr>
+            @endforeach
         </tbody>
       </table>
 @endsection
