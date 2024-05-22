@@ -22,8 +22,8 @@
             </li>
 
             <li>
-                <a class="text-white" href="#">
-                    <i class="fa-solid fa-swatchbook"></i>
+                <a class="text-white" href="{{ route('admin.types.index') }}">
+                    <i class="fa-solid fa-keyboard"></i>
                     Types
                 </a>
             </li>
