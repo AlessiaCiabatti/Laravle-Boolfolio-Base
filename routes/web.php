@@ -30,7 +30,9 @@ Route::middleware(['auth', 'verified'])
                     Route::get('/', [DashoardController::class, 'index'])->name('home');
                     // inseriamo tutte le rotte del CRUD
                     Route::resource('projects', ProjectController::class);
-                    Route::resource('technologies', TechnologyController::class);
+                    Route::resource('technologies', TechnologyController::class)->except([
+                        'create', 'edit', 'show'
+                    ]);
                     Route::resource('types', TypeController::class);
                 });
 
