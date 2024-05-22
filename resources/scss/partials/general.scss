@@ -40,4 +40,27 @@ aside {
     }
 }
 
+.crud-table{
+    td:first-child{
+        width: 350px;
+        padding-left: 20px;
+    }
+    th:first-child{
+        padding-left: 20px;
+    }
+    td:last-child{
+        width: 120px;
+    }
+    input{
+        border: none;
+        outline: none;
+    }
+}
+
+.my_bgy{
+    background-color: rgb(254, 236, 166);
+}
+.my_bgr{
+    background-color: rgb(237, 131, 107);
+}
 
