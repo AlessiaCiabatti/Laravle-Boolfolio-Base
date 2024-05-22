@@ -1,11 +1,10 @@
-body {
-    background-color: rgb(255, 233, 224);
-}
 
-header {
+
+header.navbar {
     background-color: white;
     height: 60px;
 }
+
 
 .main-wrapper {
     height: calc(100vh - 60px);
@@ -15,9 +14,15 @@ header {
 aside {
     background-color: #ffb5a0;
     width: 210px;
-
+    flex-shrink: 0;
+    // border-top-right-radius: 20px;
+    // border-bottom-right-radius: 20px;
     .dashboard{
         margin-left: 30px;
+    }
+
+    ::before {
+        font-size: 1.3rem;
     }
 
     .my_db{
@@ -31,13 +36,43 @@ aside {
             line-height: 60px;
             a {
                 text-decoration: none;
-                font-size: .9rem;
                 &:hover{
                     text-decoration: underline;
                 }
             }
         }
     }
+}
+
+input.form-control.me-2 {
+    border-radius: 0px;
+    background-color: rgb(255, 233, 224);
+    border-color: rgb(255, 213, 196);
+}
+
+button.btn.btn-outline-success {
+    border-radius: 0px;
+    background-color: rgb(255, 233, 224);
+    border-color: rgb(255, 213, 196);
+    color: rgb(69, 69, 69);
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: rgb(255, 189, 163) !important;
+        border-color: rgb(255, 213, 196) !important;
+        color: rgb(69, 69, 69) !important;
+        box-shadow: none;
+    }
+}
+
+.alert.alert-danger {
+    border-radius: 0px;
+    background-color: #ed9b8c4a;
+}
+
+.alert.alert-success {
+    border-radius: 0px;
 }
 
 .crud-table{
@@ -61,7 +96,6 @@ aside {
     background-color: rgb(254, 236, 166);
 }
 .my_bgr{
-    background-color: rgb(237, 131, 107);
+    background-color: rgb(237, 126, 107);
 }
-
 

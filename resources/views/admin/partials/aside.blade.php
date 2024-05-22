@@ -8,6 +8,13 @@
     <div>
         <ul>
             <li>
+                <a class="text-white" href="{{ route('admin.home') }}">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+            </li>
+
+            <li>
                 <a class="text-white" href="#">
                     <i class="fa-solid fa-diagram-project"></i>
                     Categories

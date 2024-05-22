@@ -10,7 +10,7 @@
                 </form>
                 <p class="me-3 mb-0">{{ Auth::user()->name }}</p>
                 <form action="{{ route('logout') }}" method="POST">
-                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
+                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-right-from-bracket"></i></button>
                     @csrf
                 </form>
             </div>
