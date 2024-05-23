@@ -31,7 +31,7 @@
     <div class="my-4">
         <form action="{{ route('admin.types.store') }}" method="POST" class="d-flex">
             @csrf
-            <input class="form-control me-2" type="search" placeholder="Search" name="name">
+            <input class="form-control me-2" type="search" placeholder="Add" name="name">
             <button class="btn btn-outline-success" type="submit">Send</button>
         </form>
     </div>
@@ -40,13 +40,13 @@
         <thead>
             <tr>
                 <th scope="col">Types</th>
-                <th scope="col">Actions</th>
+                <th class="second_th" scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($types as $type)
                 <tr>
-                    <td>
+                    <td class="last_td">
                         <form action="{{ route('admin.types.update', $type->id) }}" method="POST"
                             id="form-edit-{{ $type->id }}">
                             @csrf
@@ -55,16 +55,18 @@
                         </form>
                     </td>
 
-                    <td class="d-flex">
-                        <button class="btn my_bgy me-2" onclick="submitForm({{ $type->id }})"><i
-                                class="fa-solid fa-pencil"></i></button>
+                    <td>
+                        <div class="d-flex">
+                            <button class="btn my_bgy me-2" onclick="submitForm({{ $type->id }})"><i
+                                    class="fa-solid fa-pencil"></i></button>
 
-                        <form action="{{ route('admin.types.destroy', $type->id) }}" method="POST"
-                            onsubmit="return confirm('Do you want to delete this types?')">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn my_bgr"><i class="fa-solid fa-trash-can"></i></button>
-                        </form>
+                            <form action="{{ route('admin.types.destroy', $type->id) }}" method="POST"
+                                onsubmit="return confirm('Do you want to delete this types?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn my_bgr"><i class="fa-solid fa-trash-can"></i></button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach

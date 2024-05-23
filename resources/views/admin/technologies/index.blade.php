@@ -31,7 +31,7 @@
     <div class="my-4">
         <form action="{{ route('admin.technologies.store') }}" method="POST" class="d-flex">
             @csrf
-            <input class="form-control me-2" type="search" placeholder="Search" name="name">
+            <input class="form-control me-2" type="search" placeholder="Add" name="name">
             <button class="btn btn-outline-success" type="submit">Send</button>
         </form>
     </div>
@@ -40,7 +40,7 @@
         <thead>
             <tr>
                 <th scope="col">Technology</th>
-                <th scope="col">Actions</th>
+                <th class="second_th" scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -55,16 +55,18 @@
                         </form>
                     </td>
 
-                    <td class="d-flex">
-                        <button class="btn my_bgy me-2" onclick="submitForm({{ $technology->id }})"><i
-                                class="fa-solid fa-pencil"></i></button>
+                    <td>
+                        <div class="d-flex">
+                            <button class="btn my_bgy me-2" onclick="submitForm({{ $technology->id }})"><i
+                                    class="fa-solid fa-pencil"></i></button>
 
-                        <form action="{{ route('admin.technologies.destroy', $technology->id) }}" method="POST"
-                            onsubmit="return confirm('Do you want to delete this technology?')">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn my_bgr"><i class="fa-solid fa-trash-can"></i></button>
-                        </form>
+                            <form action="{{ route('admin.technologies.destroy', $technology->id) }}" method="POST"
+                                onsubmit="return confirm('Do you want to delete this technology?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn my_bgr"><i class="fa-solid fa-trash-can"></i></button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach
